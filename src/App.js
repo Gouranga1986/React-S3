@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <h1>
-        Search User
+        Filter UserList
       </h1>
       <input type="text" onChange={handleOnChange} />
       <div>
