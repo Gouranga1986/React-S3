@@ -1,0 +1,119 @@
+
+      test("should open remove device modal and call handler", async () => {
+        const props = { history: { push() {} } };
+      
+        const routerLandingInitialState = {
+          getDeviceGroupDetailsAPIData: deviceGroupDetailsData,
+          createDeviceGroupData: {
+            parentalControlId: 'test-id',
+            hashedMtn: 'hashed-mtn',
+            keyword: [],
+            exception: [],
+            devices: ['mac1', 'mac2'], // More than 1 device ensures regular modal (not last device)
+            name: 'Test Group',
+            connectedDevices: [{ macId: 'mac1', displayName: 'Device 1' }, { macId: 'mac2', displayName: 'Device 2' }],
+            page: 'manage',
+          },
+          getDeviceGroupDetailsFetching: false
+        };
+      
+        const routerLandingReducer = (state = routerLandingInitialState) => state;
+        const appReducer = combineReducers({ Router: routerLandingReducer });
+        const testStore = configureStore(appReducer);
+      
+        render(
+          <Provider store={testStore}>
+            <DeviceGroupDetails {...props} />
+          </Provider>
+        );
+        
+        const removeDeviceBtn = screen.getByTestId("remove-device");
+        expect(removeDeviceBtn).toBeInTheDocument();
+        fireEvent.click(removeDeviceBtn);
+
+        const confirmBtn = screen.getByText("Remove"); 
+        expect(confirmBtn).toBeInTheDocument();
+        fireEvent.click(confirmBtn);
+      });     
+
+
+
+export const deviceGroupDetailsData = {
+  "pageAttributes": [
+    {
+      "itemKey": "pageTitle",
+      "itemValue": "Create a device group"
+    },
+    {
+      "itemKey": "subTitle",
+      "itemValue": "Device groups allow you to set parental or other controls on multiple devices at once."
+    },
+    {
+      "itemKey": "breadCrumbDeviceGroup",
+      "itemValue": "Device group"
+    }
+  ],
+  "sections": [
+    {
+      "sectionId": "manageDeviceGroupSection",
+      "contents": [
+        {
+          "contentComponentId": "manageDeviceGroupSelectedDevices",
+          "items": [
+            {
+              "itemKey": "manageDeviceGroupSelectedDevicesHeading",
+              "itemType": "text",
+              "itemValue": "##DEVICES_NUMBER## devices selected"
+            }
+          ]
+        },
+        {
+          "contentComponentId": "manageGroupName",
+          "items": []
+        },
+        {
+          "contentComponentId": "deviceTileComponent",
+          "items": []
+        },
+        {
+          "contentComponentId": "manageDeviceGroupDowntimeSchedule",
+          "items": []
+        },
+        {
+          "contentComponentId": "manageDeviceGroupWebsiteExceptions",
+          "items": []
+        },
+        {
+          "contentComponentId": "manageDeviceGroupKeywordsExceptions",
+          "items": []
+        }
+      ],
+      "data": {
+        "groupName": "Test Group",
+        "parentalControlId": "test-id",
+        "accessType": 1,
+        "isEnabled": true,
+        "daysOfTheWeek": ["Mon", "Tue"],
+        "startTimeHour": "08",
+        "startTimeMinute": "00",
+        "startTimePeriod": "AM",
+        "stopTimeHour": "10",
+        "stopTimeMinute": "00",
+        "stopTimePeriod": "PM",
+        "deviceMacNameList": [
+          { "macId": "mac1" },
+          { "macId": "mac2" }
+        ],
+        "websiteExceptions": [],
+        "keywordExceptions": []
+      }
+    }
+  ],
+  "usageNewLandingFlag": false,
+  "updateNickNameFlag": false,
+  "assignDeviceFFlag": false,
+  "fwaUpsFlag": false,
+  "secondNumberPerkDisplayFFlag": false,
+  "elvisEnabledFFlag": false,
+  "deceasedFlag": false
+};
