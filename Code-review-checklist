@@ -1,0 +1,42 @@
+Category	Checklist Item	Status (Pass/Fail/NA)	Comments			
+Code Quality & Structure	Code follows proper folder structure					
+Code Quality & Structure	Component file names follow PascalCase					
+Code Quality & Structure	Components are split into logical subcomponents					
+Code Quality & Structure	Code avoids duplication (DRY Principle)					
+Code Quality & Structure	Uses functional components over class components					
+React Specific	Proper use of useState, useEffect, and other hooks					
+React Specific	Avoids unnecessary re-renders (e.g., useMemo/useCallback)					
+React Specific	Conditional rendering is clear and efficient					
+React Specific	State is lifted/lowered properly between components					
+React Specific	Keys are used in list rendering					
+React Specific	Controlled components used for forms					
+Redux/State Management	Actions, reducers, and selectors are organized					
+Redux/State Management	Uses useSelector and useDispatch appropriately					
+Redux/State Management	Avoids unnecessary global state					
+Redux/State Management	Async operations handled with middleware (Thunk, Saga)					
+Code Readability	Proper indentation and formatting					
+Code Readability	Meaningful variable and function names					
+Code Readability	Comments added where necessary					
+Code Readability	Avoids deeply nested code					
+Error Handling	All async operations have try-catch					
+Error Handling	UI gracefully handles API errors					
+Error Handling	Fallback UI is present for error boundaries					
+Performance	Large components are split for lazy loading					
+Performance	Debouncing used for search or resize handlers					
+Performance	Avoids inline functions in props when unnecessary					
+Testing	Unit tests written for major logic					
+Testing	Components are tested using React Testing Library					
+Testing	Edge cases are covered					
+Testing	Test coverage >= 80%					
+Security	Input sanitization present					
+Security	No usage of dangerouslySetInnerHTML without validation					
+Security	Secure API handling					
+Styling	Consistent styling approach (CSS modules, styled-components, etc.)					
+Styling	No inline styles unless necessary					
+Styling	Responsive design verified					
+Accessibility	ARIA roles used where appropriate					
+Accessibility	All images have alt tags					
+Accessibility	Keyboard navigation supported					
+Build & Deployment	No console.log or debugger statements					
+Build & Deployment	Environment variables handled securely					
+Build & Deployment	Code passes lint and build checks					
